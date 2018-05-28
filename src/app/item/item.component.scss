@@ -1,0 +1,9 @@
+:host {
+  height: 64px;
+  display: block;
+  cursor: pointer;
+  box-shadow: 0 0 10px 0 rebeccapurple;
+  &.hold {
+    visibility: hidden;
+  }
+}

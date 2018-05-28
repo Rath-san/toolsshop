@@ -1,0 +1,7 @@
+<ul class="inventory">
+    <li *ngFor="let item of inventory; let i=index; trackBy:i" class="slot">
+        <app-slot [index]="i">
+            <app-item *ngIf="item" [item]="item" draggable="true"></app-item>
+        </app-slot>        
+    </li>
+</ul>
