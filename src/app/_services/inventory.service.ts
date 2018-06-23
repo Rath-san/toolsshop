@@ -7,9 +7,9 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class InventoryService {
 
-
-
   itemHeld: Item;
+  itemHeldIndex: number;
+  itemHeldSlotType: string;
 
   inventorySize = 10;
 
@@ -24,7 +24,6 @@ export class InventoryService {
 
   private updateInventory(): void {
     this.inventory$.next(this.inventory);
-    console.log(this.inventory);
   }
 
   // public createItem(item: Item, index: number): void {
@@ -35,12 +34,21 @@ export class InventoryService {
   public addItem(index: number): void {
     this.inventory[index] = this.itemHeld;
     this.itemHeld = undefined;
-    // this.updateInventory();
   }
 
   // public switchItems(): void {
   //   console.log('switchitems');
   // }
+
+  public resetItem(): void {
+    if (this.inventory[this.itemHeldIndex] > -1) {
+      this.inventory[this.itemHeldIndex] = this.itemHeld;
+    }
+  }
+
+  public getIndex(item: Item): void {
+    this.itemHeldIndex = this.inventory.indexOf(item);
+  }
 
   public orderItems(): void {
     // this.inventory.sort((a, b) => {
@@ -53,7 +61,6 @@ export class InventoryService {
   public removeItem(): void { // should return index || id
     const index = this.inventory.indexOf(this.itemHeld);
     this.inventory[index] = undefined;
-
   }
 
 }

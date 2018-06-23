@@ -1,2 +1,15 @@
-<div class="crafting-table">
-</div>
+<ng-container *ngFor="let item of inputSub | async; let i=index">
+    <app-slot [index]=i [slotType]="'input'">
+        <app-item *ngIf="item" [item]="item" draggable="true"></app-item>
+    </app-slot>
+</ng-container>
+
+=
+
+<app-slot *ngFor="let item of outputSub | async; let i=index" [slotType]="'output'">
+    <app-item *ngIf="item" [item]="item" draggable="true"></app-item>
+</app-slot>
+
+
+
+<button (click)="craft()">craft</button>

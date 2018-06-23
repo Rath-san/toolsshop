@@ -26,17 +26,15 @@ export class ItemComponent implements OnInit {
   @HostListener('dragstart', ['$event'])
   public dragStart() {
     this._iS.itemHeld = this.item;
+    this._iS.getIndex(this.item);
     setTimeout(() => {
       this._re2.addClass(this._elRef.nativeElement, 'hold');
     }, 1);
-    // console.log('drag start');
   }
 
   @HostListener('dragend', ['$event'])
   public dragEnd() {
-    this._iS.itemHeld = null;
     this._re2.removeClass(this._elRef.nativeElement, 'hold');
-    // console.log('drag end');
   }
 
   // item image

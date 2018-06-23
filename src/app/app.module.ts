@@ -9,6 +9,7 @@ import { ItemComponent } from './item/item.component';
 import { MainService } from './_services/main.service';
 import { CraftingTableComponent } from './crafting-table/crafting-table.component';
 import { InventoryService } from './_services/inventory.service';
+import { WorkbenchService } from './_services/workbench.service';
 import { SlotComponent } from './slot/slot.component';
 
 @NgModule({

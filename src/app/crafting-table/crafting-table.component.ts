@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WorkbenchService } from '../_services/workbench.service';
 
 @Component({
   selector: 'app-crafting-table',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CraftingTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _wS: WorkbenchService
+  ) { }
+
+  input;
+  inputSub;
+  output;
+  outputSub;
+
 
   ngOnInit() {
+    this.inputSub = this._wS.input$;
+    this.outputSub = this._wS.output$;
+  }
+
+  public craft() {
+    this._wS.createItem();
   }
 
 }
